@@ -1,0 +1,193 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "MelkeyGoStack": {
+        "id": "MelkeyGoStack",
+        "path": "MelkeyGoStack",
+        "children": {
+          "myLambdaFunction": {
+            "id": "myLambdaFunction",
+            "path": "MelkeyGoStack/myLambdaFunction",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "MelkeyGoStack/myLambdaFunction/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "MelkeyGoStack/myLambdaFunction/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.133.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "MelkeyGoStack/myLambdaFunction/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.133.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.133.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "MelkeyGoStack/myLambdaFunction/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "MelkeyGoStack/myLambdaFunction/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.133.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "MelkeyGoStack/myLambdaFunction/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.133.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.133.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "MelkeyGoStack/myLambdaFunction/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": {
+                        "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+                      },
+                      "s3Key": "5a15f8b2473bbfc10c7a6f5a945e80aed3238659c5fa8c16aea6fec00c7836b4.zip"
+                    },
+                    "handler": "index.handler",
+                    "role": {
+                      "Fn::GetAtt": [
+                        "myLambdaFunctionServiceRole73F2A75C",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "provided.al2023"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.133.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.133.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "MelkeyGoStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "MelkeyGoStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.133.0"
+                }
+              },
+              "Condition": {
+                "id": "Condition",
+                "path": "MelkeyGoStack/CDKMetadata/Condition",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnCondition",
+                  "version": "2.133.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "MelkeyGoStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.133.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "MelkeyGoStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.133.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.133.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.3.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.133.0"
+    }
+  }
+}
